@@ -6,5 +6,6 @@ app = FastAPI()
 def read_root():
     return {
         "Message": "Hello from fastAPI on Cloud Run!",
-        "Author": "GitHub Actions Workflow"
+        "Author": "GitHub Actions Workflow",
+        "Version": "1.0.0"
     }
