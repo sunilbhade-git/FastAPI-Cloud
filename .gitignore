@@ -43,3 +43,8 @@ htmlcov/
 
 # Databases
 *.sqlite3
+
+# Ensure CI workflow is tracked
+!.github/
+!.github/workflows/
+!.github/workflows/deploy.yaml

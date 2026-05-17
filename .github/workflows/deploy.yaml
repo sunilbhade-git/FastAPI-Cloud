@@ -1,0 +1,26 @@
+name: Deploy to Cloud Run 
+ 
+on: 
+  push: 
+    branches: ["main"] 
+ 
+jobs: 
+  deploy: 
+    runs-on: ubuntu-latest 
+    steps: 
+    - name: Checkout repository 
+      uses: actions/checkout@v3 
+ 
+    - name: Authenticate to Google Cloud
+      uses: google-github-actions/auth@v2 
+      with: 
+        workload_identity_provider: 'projects/676202494662/locations/global/workloadIdentityPools/github-action-pool/providers/github-provider'
+        service_account: 'github-actions-deployer@containarization-496614.iam.gserviceaccount.com' 
+ 
+    - name: Deploy to Cloud Run 
+      run: | 
+        gcloud run deploy fastapi-service \ 
+          --source . \ 
+          --platform managed \ 
+          --region us-central1 \ 
+          --allow-unauthenticated

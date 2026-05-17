@@ -4,4 +4,7 @@ app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"Message": "Hello from fastAPI on Cloud Run!"}
+    return {
+        "Message": "Hello from fastAPI on Cloud Run!",
+        "Author": "GitHub Actions Workflow"
+    }
